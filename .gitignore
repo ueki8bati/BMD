@@ -1,1 +1,9 @@
-/myvenv
+myvenv
+yat0ivenv
+*.pyc
+*~
+/.vscode
+__pycache__
+db.sqlite3
+/static
+.DS_Store

@@ -31,6 +31,7 @@ python3 -m venv 仮想環境名
 仮想環境名\Scripts\activate
 # Linux and OS X
 source 仮想環境名/bin/activate
+```
 
 ### pipアップグレード
 ```
