@@ -12,3 +12,7 @@ class Dictionary(models.Model):
 
     def __str__(self):
         return self.title
+
+class SlackBots(models.Model):
+    botname = models.CharField(max_length=256)
+    #tokun = 
