@@ -5,6 +5,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Dictionary(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=256)
     url = models.URLField()
     tag = models.CharField(max_length=256)
@@ -13,6 +14,8 @@ class Dictionary(models.Model):
     def __str__(self):
         return self.title
 
+'''
 class SlackBots(models.Model):
     botname = models.CharField(max_length=256)
     #tokun = 
+'''

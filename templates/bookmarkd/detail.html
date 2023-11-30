@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<!-- コンテンツ -->
+{% block content %}
+<div class="container">
+    <center>
+        <h1 style="color: white">Bookmark Dictionary</h1>
+        <div>
+            <p>{{ bookmark.title }}</p>
+            <a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
+            <p>{{ bookmark.tag }}</p>
+            <p>{{ bookmark.date }}</p>
+        </div>
+    </center>
+</div>
+{% endblock %}

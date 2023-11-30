@@ -127,4 +127,4 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'account:login'
-LOGIN_REDIRECT_URL = 'account:top'
+LOGIN_REDIRECT_URL = 'bookmarkd:index'

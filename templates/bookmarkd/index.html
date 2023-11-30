@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+<!-- コンテンツ -->
+{% block content %}
+<div class="container">
+    <center>
+        <h1 style="color: white">Bookmark Dictionary</h1>
+        <div>
+            <h2><a href="{% url 'bookmarkd:add' %}"><span class="glyphicon glyphicon-plus">ブックマーク追加</span></a></h2>
+        </div>
+        <br>
+            {% for bookmark in bookmarks %}
+                <h2>{{bookmark.id}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h2></br>
+            {% endfor %}
+        </div>
+    </center>
+</div>
+{% endblock %}

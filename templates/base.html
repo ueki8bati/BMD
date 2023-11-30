@@ -13,29 +13,26 @@
 
     <title>ユーザー登録・更新</title>
   </head>
-  <body>
+  <body style="background-color:gray">
     <!-- ナビバー -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-      <a class="navbar-brand" href="{% url 'account:top' %}">テストサイト</a>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'bookmarkd:index' %}">BookmarkDictionary</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:top' %}">Top</a>
-          </li>
             {% if not user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'account:login' %}">Log in</a>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'account:signup' %}">Sign up</a>
               </li>
             {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:my_page' user.pk %}">My page</a>
+                <a class="nav-link" href="{% url 'account:my_page' user.pk %}">{{ user.username }}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'account:logout' %}">Log out</a>
@@ -44,13 +41,7 @@
         </ul>
       </div>
     </nav>
-    <div class="pl-4 small" style="background-color: #e2e3e5 ; border-bottom: solid 1px #f3f3f3;">
-        {% if not user.is_authenticated %}
-          こんにちは！ ゲスト さん
-        {% else %}
-          こんにちは！ {{ user.username }} さん
-        {% endif %}
-    </div>
+    
     <!-- コンテンツ -->
     {% block content %}{% endblock %}
 
