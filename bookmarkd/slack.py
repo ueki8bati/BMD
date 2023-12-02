@@ -1,3 +1,4 @@
+'''
 from .models import Dictionary
 import requests
 
@@ -10,3 +11,5 @@ class ReadMessage():
     payload  = {"channel" : "bookmark"}
     res = requests.get(url, headers=header, params=payload)
     print(res.json())
+
+'''

@@ -7,14 +7,22 @@ from .forms import DictionaryForm
 
 # Create your views here.
 
+'''
 @login_required
 def index(request):
     bookmarks = Dictionary.objects.all()
     return render(request, 'bookmarkd/index.html',{'bookmarks':bookmarks})
+'''
+
+def index(request):
+    # ログインユーザーが追加したブックマークのみを取得
+    bookmarks = Dictionary.objects.filter(author=request.user)
+    return render(request, 'bookmarkd/index.html', {'bookmarks': bookmarks})
 
 @login_required
 def detail(request, id):
-    bookmark = get_object_or_404(Dictionary, id=id)
+    bookmark = get_object_or_404(Dictionary, id=id, author=request.user)
+    #ookmark = get_object_or_404(Dictionary, id=id)
     return render(request, 'bookmarkd/detail.html', {'bookmark': bookmark})
 
 @login_required

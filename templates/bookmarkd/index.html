@@ -10,7 +10,7 @@
         </div>
         <br>
             {% for bookmark in bookmarks %}
-                <h2>{{bookmark.id}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h2></br>
+                <h2>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h2></br>
             {% endfor %}
         </div>
     </center>
