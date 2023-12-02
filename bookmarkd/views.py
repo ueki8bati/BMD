@@ -1,18 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.views.generic import ListView
 from .models import Dictionary
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .forms import DictionaryForm
 from django.views.decorators.http import require_POST
 
+from django.db.models import Q
+from django.contrib import messages
 
 # Create your views here.
-
-def index(request):
-    # ログインユーザーが追加したブックマークのみを取得
-    bookmarks = Dictionary.objects.filter(author=request.user)
-    return render(request, 'bookmarkd/index.html', {'bookmarks': bookmarks})
+class Index(ListView):
+    template_name = 'bookmarkd/index.html'
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        queryset = Dictionary.objects.filter(author=self.request.user)
+    
+        if query:
+            queryset = queryset.filter(Q(title__icontains=query) | Q(tag__icontains=query))
+        return queryset
 
 @login_required
 def detail(request, id):
@@ -55,3 +62,4 @@ def delete(request, id):
     bookmark.delete()
     bookmarks = Dictionary.objects.filter(author=request.user)
     return render(request, 'bookmarkd/index.html', {'bookmarks': bookmarks})
+
