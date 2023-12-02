@@ -9,6 +9,7 @@ class Dictionary(models.Model):
     title = models.CharField(max_length=256)
     url = models.URLField()
     tag = models.CharField(max_length=256)
+    url_tag = models.CharField(max_length=2560,default=None)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

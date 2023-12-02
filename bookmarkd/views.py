@@ -6,9 +6,10 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .forms import DictionaryForm
 from django.views.decorators.http import require_POST
-
 from django.db.models import Q
-from django.contrib import messages
+
+from .getURL import get_url
+from .mecab import get_url_tag
 
 # Create your views here.
 class Index(ListView):
@@ -16,9 +17,9 @@ class Index(ListView):
     def get_queryset(self):
         query = self.request.GET.get('query')
         queryset = Dictionary.objects.filter(author=self.request.user)
-    
+
         if query:
-            queryset = queryset.filter(Q(title__icontains=query) | Q(tag__icontains=query))
+            queryset = queryset.filter(Q(title__icontains=query) | Q(tag__icontains=query) | Q(url_tag__icontains=query))
         return queryset
 
 @login_required
@@ -33,6 +34,7 @@ def add(request):
         if form.is_valid():
             bookmark = form.save(commit=False)
             bookmark.author = request.user
+            bookmark.url_tag = get_url_tag(get_url(bookmark.url))
             bookmark.date = timezone.now()
             bookmark.save()
             return render(request, 'bookmarkd/detail.html', {'bookmark': bookmark})
@@ -40,7 +42,6 @@ def add(request):
         form = DictionaryForm()
     return render(request, 'bookmarkd/edit.html', {'form': form})
 
-#追記
 @login_required
 def edit(request,id):
     bookmark = get_object_or_404(Dictionary, id=id)
@@ -49,6 +50,7 @@ def edit(request,id):
         if form.is_valid():
             bookmark = form.save(commit=False)
             bookmark.author = request.user
+            bookmark.url_tag = get_url_tag(get_url(bookmark.url))
             bookmark.date = timezone.now()
             bookmark.save()
             return render(request, 'bookmarkd/detail.html', {'bookmark': bookmark})
