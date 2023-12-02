@@ -8,8 +8,14 @@
         <div>
             <h2><a href="{% url 'bookmarkd:add' %}"><span class="glyphicon glyphicon-plus">ブックマーク追加</span></a></h2>
         </div>
+        <form method="get">
+            <input type="search" value="{{ request.GET.query }}" 
+                name="query" type="text" 
+                placeholder=" 検索ワードを入力 ">
+            <button>検索</button>
+        </form>
         <br>
-            {% for bookmark in bookmarks %}
+            {% for bookmark in object_list %}
                 <h2>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h2></br>
             {% endfor %}
         </div>
