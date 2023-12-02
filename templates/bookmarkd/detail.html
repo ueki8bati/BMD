@@ -10,6 +10,10 @@
             <a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
             <p>{{ bookmark.tag }}</p>
             <p>{{ bookmark.date }}</p>
+            <a class="btn btn-outline-primary" href="{% url 'bookmarkd:edit' id=bookmark.id %}"><span class="glyphicon glyphicon-pencil"></span>更新</a>
+            <form method="post" action="{% url 'bookmarkd:delete' id=bookmark.id %}">{% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+            </form>
         </div>
     </center>
 </div>
