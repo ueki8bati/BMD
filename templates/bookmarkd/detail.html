@@ -1,15 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
 
 <!-- コンテンツ -->
 {% block content %}
 <div class="container">
     <center>
-        <h1 style="color: white">Bookmark Dictionary</h1>
+
         <div>
-            <p>{{ bookmark.title }}</p>
+            <h1 style="color: black"><p>{{ bookmark.title }}</p></h1>
             <a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
-            <p>{{ bookmark.tag }}</p>
-            <p>{{ bookmark.date }}</p>
+            <p>tag : {{ bookmark.tag }}</p>
+            <small class="text-muted"><p>{{ bookmark.date }}</p></small>
             <a class="btn btn-outline-primary" href="{% url 'bookmarkd:edit' id=bookmark.id %}"><span class="glyphicon glyphicon-pencil"></span>更新</a>
             <form method="post" action="{% url 'bookmarkd:delete' id=bookmark.id %}">{% csrf_token %}
                 <button class="btn btn-outline-danger" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
