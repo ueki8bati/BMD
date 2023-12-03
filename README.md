@@ -63,3 +63,4 @@ python manage.py runserver
 ```
 
 ## URL
+[BMD](http://13.236.93.180:8000/)
