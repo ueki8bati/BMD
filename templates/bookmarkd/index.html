@@ -8,9 +8,13 @@
 <div class="container">
     <center>
         <h1 style="color: black">Bookmark Dictionary</h1>
+        <br>
+        <br>
         <div>
             <h2><a href="{% url 'bookmarkd:add' %}"><span class="btn btn-primary">ブックマーク追加</span></a></h2>
         </div>
+        <br>
+        <br>
         <form method="get">
             <input type="search" value="{{ request.GET.query }}" 
                 name="query" type="text" 

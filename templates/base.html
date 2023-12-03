@@ -19,9 +19,11 @@
   </head>
   <body>
   
-    <header>
+  <div class="wrapper">
+    <head>
+
       <!-- ナビバー -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="{% url 'bookmarkd:index' %}">BookmarkDictionary</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -48,22 +50,22 @@
         </div>
       </nav>
     </header>
+  </div>
+  
+  <header id="header"></header>
 
-    
     <aside id="sub">
       {% if user.is_authenticated %}
         {% for bookmark in object_list %}
           <div class="box1">
-            <h2>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h2></br>
+            <h3>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h3></br>
           </div>
         {% endfor %}
       {% endif %}
     </aside>
 
     <!-- コンテンツ -->
-    <main id="main">
-      {% block content %}{% endblock %}
-    </main>
+    <main id="main">{% block content %}{% endblock %}</main>
     
 
     <!-- Optional JavaScript -->

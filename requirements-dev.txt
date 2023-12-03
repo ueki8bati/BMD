@@ -5,3 +5,4 @@ mecab-python3~=1.0.8
 unidic~=1.1.0
 django-environ~=0.11.2
 dj-database-url~=2.1.0
+django-widget-tweaks~=1.5.0
