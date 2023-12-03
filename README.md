@@ -12,9 +12,8 @@
 ## システム概要
 - 言語：Python 3.8~3.11
 - フレームワーク：Django 4.2.7
-- フロントエンド：
-- データベース：SQLite3
-- 開発環境：
+- フロントエンド：HTML,CSS
+- データベース：SQLite3(テスト環境)→Postgresql(本番環境)
 - 本番環境：AWS EC2
 
 ## 環境構築
@@ -40,7 +39,22 @@ python -m pip install --upgrade pip
 
 ### ライブラリインストール
 ```
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
+
+### わかちがきのモデル追加
+```
+python -m unidic download
+```
+
+### モデルのマイグレート
+```
+python manage.py migrate
+```
+
+### スーパーアカウントの作成
+```
+python manage.py createsuperuser
 ```
 
 ### Webサーバー起動

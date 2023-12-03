@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 {% block content %}
+  <center>
     <h2>ブックマークの登録</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-outline-success">Save</button>
     </form>
+  </center>
 {% endblock %}
