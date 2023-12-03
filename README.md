@@ -66,4 +66,4 @@ python manage.py runserver
 ```
 
 ## URL
-[BMD](http://13.54.40.250/)
+[BMD](https://bookmarkdictionary.com/)
