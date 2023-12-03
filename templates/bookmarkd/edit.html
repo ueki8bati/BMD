@@ -5,10 +5,13 @@
 
 {% block content %}
 <center>
-    <h2>ブックマークの登録</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-outline-success">Save</button>
+<div class="container">
+    <div class="card card-profile my-5 mx-auto">
+        <div class="card-body">
+            <h5 class="card-title text-center">ブックマークの登録</h5>
+            <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-outline-success">Save</button>
     </form>
 </center>
 {% endblock %}
