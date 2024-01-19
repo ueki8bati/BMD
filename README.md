@@ -95,5 +95,12 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+### 本番環境更新用
+```
+git pull origin production
+sudo systemctl restart gunicorn.service
+sudo systemctl restart nginx
+```
+
 ## URL
 [BMD](https://bookmarkdictionary.com/)
