@@ -6,7 +6,8 @@ from django.utils import timezone
 
 class Dictionary(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=8, null=False, blank=False, default=None)
+    description = models.TextField(max_length=32, default=None)
     url = models.URLField()
     tag = models.CharField(max_length=256)
     url_tag = models.CharField(max_length=2560,default=None)
