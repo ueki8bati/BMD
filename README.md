@@ -28,17 +28,17 @@ cd BMD
 ### 仮想環境の作成
 ```
 # Windows
-python -m venv 仮想環境名
+python -m venv myvenv
 # Linux and OS X
-python3 -m venv 仮想環境名
+python3 -m venv myvenv
 ```
 
 ### 仮想環境の起動
 ```
 # Windows
-仮想環境名\Scripts\activate
+myvenv\Scripts\activate
 # Linux and OS X
-source 仮想環境名/bin/activate
+source myvenv/bin/activate
 ```
 
 ### pipアップグレード
@@ -57,6 +57,27 @@ pip install -r requirements.txt
 ### わかちがきのモデル追加
 ```
 python -m unidic download
+```
+
+### ブランチを切る
+```
+新規に作る場合
+git branch ブランチ名
+
+もし過去にブランチを作成していて、同じブランチ名で作り直す場合
+git branch -d ローカルブランチ名
+git push origin --delete リモートブランチ名
+git branch ブランチ名
+```
+
+### /BMDの配下に.envファイルを作成
+```
+#.envの中身
+SECRET_KEY=django-insecure-%cf#お好きな英数字を適当に追加して
+DEBUG=True
+DATABASE_URL=sqlite:///db.sqlite3
+ALLOWED_HOSTS='127.0.0.1'
+CSRF_TRUSTED_ORIGINS=""
 ```
 
 ### モデルのマイグレート
