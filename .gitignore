@@ -4,6 +4,8 @@ yat0ivenv
 *~
 /.vscode
 __pycache__
+db.sqlite3
 .DS_Store
 .env
-.sqlite3
+memo.txt
+static

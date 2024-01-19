@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -13,37 +17,56 @@
 
     <title>ユーザー登録・更新</title>
   </head>
-  <body style="background-color:gray">
-    <!-- ナビバー -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'bookmarkd:index' %}">BookmarkDictionary</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <body>
+  
+  <div class="wrapper">
+    <head>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            {% if not user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Log in</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:signup' %}">Sign up</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:my_page' user.pk %}">{{ user.username }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Log out</a>
-              </li>
-            {% endif %}
-        </ul>
-      </div>
-    </nav>
-    
+      <!-- ナビバー -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'bookmarkd:index' %}">BookmarkDictionary</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              {% if not user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account:login' %}">Log in</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account:signup' %}">Sign up</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account:my_page' user.pk %}">{{ user.username }}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account:logout' %}">Log out</a>
+                </li>
+              {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+  
+  <header id="header"></header>
+
+    <aside id="sub">
+      {% if user.is_authenticated %}
+        {% for bookmark in object_list %}
+          <div class="box1">
+            <h3>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h3></br>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </aside>
+
     <!-- コンテンツ -->
-    {% block content %}{% endblock %}
+    <main id="main">{% block content %}{% endblock %}</main>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

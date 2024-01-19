@@ -1,20 +1,50 @@
 {% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
 
 <!-- コンテンツ -->
 {% block content %}
-<div class="container">
-    <center>
-        <h1 style="color: white">Bookmark Dictionary</h1>
-        <div>
-            <p>{{ bookmark.title }}</p>
-            <a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
-            <p>{{ bookmark.tag }}</p>
-            <p>{{ bookmark.date }}</p>
-            <a class="btn btn-outline-primary" href="{% url 'bookmarkd:edit' id=bookmark.id %}"><span class="glyphicon glyphicon-pencil"></span>更新</a>
-            <form method="post" action="{% url 'bookmarkd:delete' id=bookmark.id %}">{% csrf_token %}
-                <button class="btn btn-outline-danger" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
-            </form>
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="card card-profile my-5 mx-auto">
+            <div class="card-body">
+            <h5 class="card-title text-center">詳細</h5>
+            <table class="profile_table mb-4">
+                <tbody>
+                <tr>
+                    <th class="header">title</th>
+                    <td class="data">{{ bookmark.title }}</td>
+                </tr>
+                <tr>
+                    <th class="header">URL</th>
+                    <td class="data"><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></td>
+                </tr>
+                <tr>
+                    <th class="header">タグ</th>
+                    <td class="data">{{ bookmark.tag }}</td>
+                </tr>
+                <tr>
+                    <th class="header">登録日</th>
+                    <td class="data">{{ bookmark.date }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="left_btn">
+                <div class="button buttons">
+                    <a class="btn btn-lg btn-primary btn-left" href="{% url 'bookmarkd:edit' id=bookmark.id %}"><span class="glyphicon glyphicon-pencil"></span>更新</a> 
+                    <form class="btn-right" method="post" action="{% url 'bookmarkd:delete' id=bookmark.id %}">{% csrf_token %}
+                        <button class="btn btn-lg btn-danger" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+                    </form>
+                </div>
+            </div>
+            </div>
         </div>
-    </center>
+    </div>
 </div>
+
+
 {% endblock %}
