@@ -1,26 +1,26 @@
 #header {
     box-sizing: border-box;
-    background: #ccc;
+    background: #d5d5d5;
     height: 50px;
   }
 
 #main {
     box-sizing: border-box;
-    margin-left: 220px;
+    margin-left: 300px;
     padding: 20px 40px;
   }
 #sub {
     box-sizing: border-box;
     top: 56px;
     height: 90%;
-    width: 220px;
+    width: 300px;
     position: fixed;
     overflow: auto;
     background: #eee;
     padding: 0px;
 }
 
-.box1 {
+.bookmarkbox {
     border: solid 2px black;
     background: #eee;
     width: 100%;
@@ -29,6 +29,11 @@
     */
 }
 
+.description {
+    color: gray;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 .card-profile {
     width: 700px;

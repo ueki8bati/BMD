@@ -57,8 +57,9 @@
     <aside id="sub">
       {% if user.is_authenticated %}
         {% for bookmark in object_list %}
-          <div class="box1">
-            <h3>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h3></br>
+          <div class="bookmarkbox">
+            <h3>{{forloop.counter}}:<a href="{% url 'bookmarkd:detail' id=bookmark.id %}">{{ bookmark.title }}</a></h3>
+            <div class="description">{{ bookmark.description }}</div>
           </div>
         {% endfor %}
       {% endif %}
