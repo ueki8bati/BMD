@@ -48,11 +48,12 @@ python -m pip install --upgrade pip
 
 ### ライブラリインストール
 ```
+
 #開発環境
 pip install -r requirements-dev.txt
 #本番環境
 pip install -r requirements.txt
-```
+
 
 ### わかちがきのモデル追加
 ```
