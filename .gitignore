@@ -7,5 +7,3 @@ __pycache__
 db.sqlite3
 .DS_Store
 .env
-memo.txt
-static
