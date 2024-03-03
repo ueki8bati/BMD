@@ -16,7 +16,9 @@ now_queryset = None
 
 # Create your views here.
 class Index(LoginRequiredMixin, generic.ListView):
+    global now_queryset
     template_name = 'bookmarkd/index.html'
+
     def get_queryset(self):
         global now_queryset
         query = self.request.GET.get('query')

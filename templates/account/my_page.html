@@ -57,11 +57,27 @@
         <td style="width: 50%;">スタッフ権限</td>
         <td style="width: 50%;">{{ user.is_staff }}</td>
       </tr>
+      {% else %}
+      <tr>
+        <td style="width: 50%;">スタッフ権限</td>
+        <td style="width: 50%;">{{ user.is_staff }}</td>
+      </tr>
       {% endif %}
       {% if user.is_superuser %}
       <tr>
         <td>スーパーユーザー権限</td>
         <td>{{ user.is_superuser }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td>スーパーユーザー権限</td>
+        <td>{{ user.is_superuser }}</td>
+      </tr>
+      {% endif %}
+      {% if user.is_superuser %}
+      <tr>
+        <td>管理者ページ</td>
+        <td><a href="https://bookmarkdictionary.com/admin811">URL</a></td>
       </tr>
       {% endif %}
     </tbody>
