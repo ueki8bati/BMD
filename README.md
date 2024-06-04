@@ -103,4 +103,4 @@ sudo systemctl restart nginx
 ```
 
 ## URL
-[BMD](https://bookmarkdictionary.com/)
+[BMD](https://bookmarkdictionary.com/)(現在サーバー停止中)
